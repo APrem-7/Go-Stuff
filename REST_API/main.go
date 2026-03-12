@@ -6,28 +6,30 @@ import (
 
 	"github.com/gin-gonic/gin"
 )
-type car struct{
-	miles int 
+
+type car struct {
+	miles    int
 	electric bool
-	petrol bool
+	petrol   bool
 }
 
-func whatCar(){
-	var thisCar car = car{24,true,false}
+func whatCar() {
+	var thisCar car = car{24, false, false}
 
-	if thisCar.electric{
+	if thisCar.electric {
 		fmt.Println("yes")
-	}
-	else{
-		fmt.println(thisCar.petrol)
+	} else {
+		fmt.Println(thisCar.petrol)
 	}
 }
 
 func main() {
-	router := gin.Default()
-	router.GET("/albums", getAlbums)
+	// router := gin.Default()
+	// router.GET("/albums", getAlbums)
 
-	router.Run("localhost:8080")
+	// router.Run("localhost:8080")
+
+	whatCar()
 }
 
 // album represents data about a record album.
@@ -47,5 +49,3 @@ var albums = []album{
 func getAlbums(c *gin.Context) {
 	c.IndentedJSON(http.StatusOK, albums)
 }
-
-
