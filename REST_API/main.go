@@ -1,10 +1,27 @@
 package main
 
 import (
+	"fmt"
 	"net/http"
 
 	"github.com/gin-gonic/gin"
 )
+type car struct{
+	miles int 
+	electric bool
+	petrol bool
+}
+
+func whatCar(){
+	var thisCar car = car{24,true,false}
+
+	if thisCar.electric{
+		fmt.Println("yes")
+	}
+	else{
+		fmt.println(thisCar.petrol)
+	}
+}
 
 func main() {
 	router := gin.Default()
