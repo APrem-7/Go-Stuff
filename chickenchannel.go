@@ -15,7 +15,7 @@ func main() {
 	var websites = []string{"walmart.com", "costco.com", "walgreens.com"}
 	for i := range websites {
 		go getChickenPrices(websites[i], pavBhaji)
-		go getPuriPrice(websites[i],puri)
+		go getPuriPrice(websites[i], puri)
 	}
 
 	sendMessage(pavBhaji)
@@ -36,11 +36,11 @@ func getChickenPrices(websites string, pavBhaji chan string) {
 
 }
 
-func getPuriPrice(websites string,puri chan string){
-	for{
+func getPuriPrice(websites string, puri chan string) {
+	for {
 		time.Sleep(time.Second * 1)
-		puriPrice := rand.Float32()*20
-		if puriPrice <= MAX_PURI_PRICE{
+		puriPrice := rand.Float32() * 20
+		if puriPrice <= MAX_PURI_PRICE {
 			puri <- websites
 		}
 	}
