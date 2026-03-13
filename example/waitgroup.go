@@ -6,8 +6,8 @@ import (
 	"time"
 )
 
-
-var m=sync.Mutex{}
+var rm = sync.RWMutex{}
+var m = sync.Mutex{}
 var wg = sync.WaitGroup{}
 var dbData = []string{"id1", "id2", "id3", "id4", "id5", "id6"}
 var results = []string{}
@@ -32,6 +32,13 @@ func dbCall(i int) {
 	m.Lock()
 	results = append(results, dbData[i])
 	m.Unlock()
+	log()
 
 	wg.Done()
+}
+
+func log() {
+	rm.RLock()
+	fmt.Printf("The current results are %v\n", results)
+	rm.RUnlock()
 }
