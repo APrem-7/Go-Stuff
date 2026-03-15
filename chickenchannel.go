@@ -18,8 +18,8 @@ func main() {
 		go getPuriPrice(websites[i], puri)
 	}
 
-	sendMessage(pavBhaji)
-	sendMessage(puri)
+	sendMessagePav(pavBhaji)
+	sendMessagePuri(puri)
 
 }
 
@@ -46,6 +46,10 @@ func getPuriPrice(websites string, puri chan string) {
 	}
 }
 
-func sendMessage(pavBhaji chan string) {
-	fmt.Printf("Found a deal on chicken at %s", <-pavBhaji)
+func sendMessagePav(pavBhaji chan string) {
+	fmt.Printf("Found a deal on pavbhaji at %s", <-pavBhaji)
+}
+
+func sendMessagePuri(puri chan string) {
+	fmt.Printf("Found a deal on panu puri at %s", <-puri)
 }
